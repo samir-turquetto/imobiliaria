@@ -1,0 +1,8 @@
+<h1>Incluir Corretor</h1>
+<form method="post" action="<?=$this->url('cadastros',[
+'controller' => 'corretor',
+'action' => 'gravar'    
+])?>">
+Nome: <input type="text" name="nome" autofocus="autofocus">
+<input type="submit" value="gravar">
+</form>

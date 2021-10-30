@@ -15,6 +15,9 @@ class CorretorTable
     public function gravar(Corretor $corretor)
     {
         $set = $corretor->toArray();
+        if (isset($set['matricula']) && !empty($set['matricula'])){
+            return $this->tableGateway->update($set,['matricula' => $set['matricula']]);
+        }
         $this->tableGateway->insert($set);
     }
     
@@ -27,6 +30,19 @@ class CorretorTable
     {
         $this->tableGateway->delete(['matricula' => $matricula]);
     }
+    
+    public function buscar(int $matricula): Corretor{
+        $corretores = $this->tableGateway->select(['matricula' => $matricula]);
+        if ($corretores->count() != 0){
+            return $corretores->current();
+        }
+        return new Corretor([]);
+    }
+    
+    
+    
+    
+    
     
     
     

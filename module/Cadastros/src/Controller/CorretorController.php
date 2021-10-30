@@ -29,7 +29,12 @@ class CorretorController extends AbstractActionController
     
     public function editarAction()
     {
-        return new ViewModel();
+        $matricula = (int) $this->params('matricula');
+        $corretor = $this->corretorTable->buscar($matricula);        
+        
+        return new ViewModel([
+            'corretor' => $corretor
+        ]);
     }
     
     public function gravarAction()

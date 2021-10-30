@@ -6,7 +6,11 @@ use Laminas\View\View;
  */
 ?>
 <tr>
-<td><?=$this->matricula?></td>
+<td><a href="<?=$this->url('cadastros',[
+    'controller' => 'corretor',
+    'action'    => 'editar',
+    'matricula' => $this->matricula
+])?>"><?=$this->matricula?></a></td>
 <td><?=$this->nome?></td>
 <td><a href="<?=$this->url('cadastros',[
     'controller' => 'corretor',

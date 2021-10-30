@@ -7,13 +7,17 @@ class Corretor
     public string $nome;
     
     public function __construct(array $data){
-        $this->matricula = ($data['matricula'] ?? null);
-        $this->nome = ($data['nome'] ?? null);
+        $this->matricula = ($data['matricula'] ?? 0);
+        $this->nome = ($data['nome'] ?? '');
     }
     
     public function toArray()
     {
-        return get_object_vars($this);
+        $attributes = get_object_vars($this);
+        if ($attributes['matricula'] == 0){
+            unset($attributes['matricula']);
+        }
+        return $attributes;
     }
 }
 

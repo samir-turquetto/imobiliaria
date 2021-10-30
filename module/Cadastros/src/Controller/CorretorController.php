@@ -8,14 +8,15 @@ use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Laminas\Db\Adapter\AdapterInterface;
 use Cadastros\Model\Corretor;
+use Cadastros\Model\CorretorTable;
 
 class CorretorController extends AbstractActionController
 {
-    private AdapterInterface $dbAdapter;
+    private CorretorTable $corretorTable;
     
-    public function __construct(AdapterInterface $dbAdapter)
+    public function __construct(CorretorTable $corretorTable)
     {
-        $this->dbAdapter = $dbAdapter;
+        $this->corretorTable = $corretorTable;
     }
     
     public function indexAction()
@@ -31,8 +32,7 @@ class CorretorController extends AbstractActionController
     public function gravarAction()
     {
         $corretor = new Corretor($_POST);
-        
-        
+        $this->corretorTable->gravar($corretor);        
         
         return $this->redirect()->toRoute('cadastros',[
             'controller' => 'corretor',

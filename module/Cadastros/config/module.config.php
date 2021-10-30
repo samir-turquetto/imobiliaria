@@ -47,5 +47,9 @@ return [
             __DIR__ . '/../view',
         ],
     ],
-    'service_manager'
+    'service_manager' => [
+        'factories' => [
+            'CorretorTable' => Model\CorretorTableFactory::class
+        ]
+    ]
 ];

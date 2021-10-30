@@ -17,5 +17,10 @@ class CorretorTable
         $set = $corretor->toArray();
         $this->tableGateway->insert($set);
     }
+    
+    public function listar()
+    {
+        return $this->tableGateway->select();
+    }
 }
 

@@ -21,7 +21,10 @@ class CorretorController extends AbstractActionController
     
     public function indexAction()
     {
-        return new ViewModel();
+        $corretores = $this->corretorTable->listar();        
+        return new ViewModel([
+            'corretores' => $corretores
+        ]);
     }
     
     public function editarAction()
@@ -32,7 +35,7 @@ class CorretorController extends AbstractActionController
     public function gravarAction()
     {
         $corretor = new Corretor($_POST);
-        $this->corretorTable->gravar($corretor);        
+        $this->corretorTable->gravar($corretor);
         
         return $this->redirect()->toRoute('cadastros',[
             'controller' => 'corretor',

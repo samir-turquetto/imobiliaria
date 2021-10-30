@@ -31,8 +31,46 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->dispatch('/cadastros/corretor', 'GET');
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('cadastros');
-        $this->assertControllerName(CorretorController::class); // as specified in router's controller name alias
+        $this->assertControllerName('corretor'); // as specified in router's controller name alias
         $this->assertControllerClass('CorretorController');
         $this->assertMatchedRouteName('cadastros');
     }
+    
+    public function testApagarActionCanBeAccessed(): void
+    {
+        $this->dispatch('/cadastros/corretor/apagar', 'GET');
+        $this->assertResponseStatusCode(302);
+        $this->assertModuleName('cadastros');
+        $this->assertControllerName('corretor'); // as specified in router's controller name alias
+        $this->assertControllerClass('CorretorController');
+        $this->assertMatchedRouteName('cadastros');
+    }
+    
+    public function testEditarActionCanBeAccessed(): void
+    {
+        $this->dispatch('/cadastros/corretor/editar', 'GET');
+        $this->assertResponseStatusCode(200);
+        $this->assertModuleName('cadastros');
+        $this->assertControllerName('corretor'); // as specified in router's controller name alias
+        $this->assertControllerClass('CorretorController');
+        $this->assertMatchedRouteName('cadastros');
+    }
+    
+    public function testGravarActionCanBeAccessed(): void
+    {
+        $_POST = [
+            'nome' => 'Teste'
+        ];
+        $this->dispatch('/cadastros/corretor/gravar', 'POST');
+        $this->assertResponseStatusCode(302);
+        $this->assertModuleName('cadastros');
+        $this->assertControllerName('corretor'); // as specified in router's controller name alias
+        $this->assertControllerClass('CorretorController');
+        $this->assertMatchedRouteName('cadastros');
+        $corretorTable = $this->getApplication()->getServiceManager()->get('CorretorTable');
+        $corretor = $corretorTable->buscarPorNome('Teste');
+        $this->assertEquals('Teste', $corretor->nome);
+        $corretorTable->apagarPorNome('Teste');
+    }
+    
 }

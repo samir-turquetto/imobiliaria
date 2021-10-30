@@ -31,6 +31,11 @@ class CorretorTable
         $this->tableGateway->delete(['matricula' => $matricula]);
     }
     
+    public function apagarPorNome(string $nome)
+    {
+        $this->tableGateway->delete(['nome' => $nome]);
+    }
+    
     public function buscar(int $matricula): Corretor{
         $corretores = $this->tableGateway->select(['matricula' => $matricula]);
         if ($corretores->count() != 0){
@@ -39,16 +44,11 @@ class CorretorTable
         return new Corretor([]);
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public function buscarPorNome($nome): Corretor{
+        $corretores = $this->tableGateway->select(['nome' => $nome]);
+        if ($corretores->count() != 0){
+            return $corretores->current();
+        }
+        return new Corretor([]);
+    }
 }
-

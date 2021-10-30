@@ -3,6 +3,7 @@
     <testsuites>
         <testsuite name="Laminas MVC Skeleton Test Suite">
             <directory>./module/Application/test</directory>
+            <directory>./module/Cadastros/test</directory>
         </testsuite>
     </testsuites>
     <filter>

@@ -6,8 +6,8 @@ class Corretor
     public int $matricula;
     public string $nome;
     
-    public function __construct(array $data){
-        $this->exchangeArray($data);
+    public function __construct($data){
+       $this->exchangeArray($data);
     }
     
     public function exchangeArray(array $data)

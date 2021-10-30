@@ -12,9 +12,9 @@ class CorretorController extends AbstractActionController
 {
     private AdapterInterface $dbAdapter;
     
-    public function __construct(AdapterInterface $dbAdapter)
+    public function __construct($dbAdapter = null)
     {
-        $this->dbAdapter = $dbAdapter;
+        //$this->dbAdapter = $dbAdapter;
     }
     
     public function indexAction()

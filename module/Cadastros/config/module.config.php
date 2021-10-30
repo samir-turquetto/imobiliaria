@@ -7,6 +7,7 @@ namespace Cadastros;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use Cadastros\Controller\CorretorControllerFactory;
 
 return [
     'router' => [
@@ -28,7 +29,7 @@ return [
             'corretor' => Controller\CorretorController::class
         ],
         'factories' => [
-            Controller\CorretorController::class => InvokableFactory::class,
+            Controller\CorretorController::class => CorretorControllerFactory::class,
         ],
     ],
     'view_manager' => [

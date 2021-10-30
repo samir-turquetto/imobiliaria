@@ -21,7 +21,7 @@ return [
         'database' => 'imobiliaria',
         'username' => 'root' 
     ],
-    'service-manager' => [
+    'service_manager' => [
         'factories' => [
             'DbAdapter' => AdapterServiceFactory::class
         ]

@@ -47,4 +47,5 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'service_manager'
 ];

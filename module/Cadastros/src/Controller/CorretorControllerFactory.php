@@ -7,8 +7,7 @@ use Interop\Container\ContainerInterface;
 class CorretorControllerFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null){
-        //$dbAdapter = $container->get('DbAdapter');
-        $dbAdapter = null;
+        $dbAdapter = $container->get('DbAdapter');
         return new CorretorController($dbAdapter);
     }
 }

@@ -15,7 +15,7 @@ return [
             'cadastros' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/cadastros[/:controller[/:action]]',
+                    'route'    => '/cadastros[/:controller[/:action[/:matricula]]]',
                     'defaults' => [
                         'controller' => Controller\CorretorController::class,
                         'action'     => 'index',

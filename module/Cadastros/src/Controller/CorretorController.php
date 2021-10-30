@@ -41,5 +41,24 @@ class CorretorController extends AbstractActionController
             'controller' => 'corretor',
             'action'     => 'index'
         ]);
-    }    
+    }
+    
+    public function apagarAction()
+    {
+        $matricula = (int) $this->params('matricula');
+        $this->corretorTable->apagar($matricula);
+        return $this->redirect()->toRoute('cadastros',[
+            'controller' => 'corretor',
+            'action'     => 'index'
+        ]);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

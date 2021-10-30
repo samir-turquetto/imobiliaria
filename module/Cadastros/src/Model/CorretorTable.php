@@ -22,5 +22,17 @@ class CorretorTable
     {
         return $this->tableGateway->select();
     }
+    
+    public function apagar(int $matricula)
+    {
+        $this->tableGateway->delete(['matricula' => $matricula]);
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 

@@ -1,4 +1,16 @@
+<?php
+use Laminas\View\View;
+
+/**
+ * @var $this View
+ */
+?>
 <tr>
 <td><?=$this->matricula?></td>
 <td><?=$this->nome?></td>
+<td><a href="<?=$this->url('cadastros',[
+    'controller' => 'corretor',
+    'action'    => 'apagar',
+    'matricula' => $this->matricula
+])?>">X</a></td>
 </tr>

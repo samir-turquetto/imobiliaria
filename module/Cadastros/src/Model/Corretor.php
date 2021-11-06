@@ -4,8 +4,10 @@ namespace Cadastros\Model;
 use Application\Model\ModelInterface;
 use Laminas\Filter\FilterChain;
 use Laminas\I18n\Filter\Alpha;
-use Laminas\Filter\StripTags;
 use Laminas\Filter\StringToUpper;
+use Laminas\Validator\ValidatorChain;
+use Laminas\Validator\StringLength;
+use Laminas\I18n\Validator\Alpha as AlphaValidator;
 
 class Corretor implements ModelInterface
 {
@@ -34,5 +36,13 @@ class Corretor implements ModelInterface
         }
         return $attributes;
     }
+    
+    public function valido(): bool
+    {
+        $validatorChain = new ValidatorChain();
+        $validatorChain->attach(new StringLength(['min' => 3 , 'max' => 20]))
+        ->attach(new AlphaValidator());
+        return $validatorChain->isValid($this->nome);
+    }    
 }
 

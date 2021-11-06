@@ -9,6 +9,7 @@ use Laminas\View\Model\ViewModel;
 use Laminas\Db\Adapter\AdapterInterface;
 use Cadastros\Model\Corretor;
 use Cadastros\Model\CorretorTable;
+use Laminas\Session\Container;
 
 class CorretorController extends AbstractActionController
 {
@@ -29,17 +30,36 @@ class CorretorController extends AbstractActionController
     
     public function editarAction()
     {
-        $matricula = (int) $this->params('matricula');
-        $corretor = $this->corretorTable->buscar($matricula);        
+        if ($this->flashMessenger()->hasMessages()){
+            $sessionContainer = new Container();
+            $corretor = $sessionContainer->corretor;
+        } else {
+            $matricula = (int) $this->params('matricula');
+            $corretor = $this->corretorTable->buscar($matricula);
+        }
+        
+        $messages = $this->flashMessenger()->getMessages();
+        $this->flashMessenger()->clearMessages();
         
         return new ViewModel([
-            'corretor' => $corretor
+            'corretor' => $corretor,
+            'messages' => implode(',',$messages)
         ]);
     }
     
     public function gravarAction()
     {
         $corretor = new Corretor($_POST);
+        if (!$corretor->valido()){
+            $this->flashMessenger()->addMessage('Dados inválidos');
+            $sessionContainer = new Container();
+            $sessionContainer->corretor = $corretor;
+            return $this->redirect()->toRoute('cadastros',[
+                'controller' => 'corretor',
+                'action'     => 'editar'
+            ]);
+        }
+        
         $this->corretorTable->gravar($corretor);
         
         return $this->redirect()->toRoute('cadastros',[

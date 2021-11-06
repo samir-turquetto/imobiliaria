@@ -14,6 +14,8 @@ Nome: <input type="text" name="nome" autofocus="autofocus" value="<?=$this->corr
 <input type="hidden" name="matricula" value="<?=$this->corretor->matricula?>">
 <input type="submit" value="gravar">
 </form>
+<span><?=$this->messages?></span>
+
 <a href="<?=$this->url('cadastros',[
 'controller' => 'corretor'    
 ])?>">Voltar</a>

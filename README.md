@@ -7,6 +7,8 @@
 5. O cadastro deverá incluir, alterar, excluir e listar registros da tabela imoveis.
 6. Concluída a implementação, envie um e-mail para flavio.lisboa@fgsl.eti.br, informando o endereço do fork no Github.
 
+**PRAZO DE ENTREGA: 06/12/2021**
+
 
 # laminas-mvc-skeleton
 

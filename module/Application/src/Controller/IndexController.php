@@ -8,6 +8,7 @@ use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Application\Model\Usuario;
 use Laminas\Db\Adapter\AdapterInterface;
+use Laminas\Authentication\AuthenticationService;
 
 class IndexController extends AbstractActionController
 {
@@ -32,6 +33,12 @@ class IndexController extends AbstractActionController
         return $this->redirect()->toRoute('home');
     }
     
+    public function logoutAction()
+    {
+        $authenticationService = new AuthenticationService();
+        $authenticationService->clearIdentity();
+        return $this->redirect()->toRoute('home');        
+    }
     
     
     

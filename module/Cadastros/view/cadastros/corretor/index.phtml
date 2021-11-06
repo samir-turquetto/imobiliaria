@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var $this Laminas\View\Renderer\PhpRenderer
+ */
+?>
 <h1>Cadastro de Corretores</h1>
 <p><a href="<?=$this->url('cadastros',[
     'controller' => 'corretor',
@@ -14,3 +19,4 @@
 <?=$this->partialLoop('corretores.phtml',$this->corretores)?>
 </tbody>
 </table>
+<a href="<?=$this->url('cadastros')?>">Voltar</a>

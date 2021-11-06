@@ -17,7 +17,7 @@ return [
                 'options' => [
                     'route'    => '/cadastros[/:controller[/:action[/:matricula]]]',
                     'defaults' => [
-                        'controller' => Controller\CorretorController::class,
+                        'controller' => Controller\IndexController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -29,6 +29,7 @@ return [
             'corretor' => Controller\CorretorController::class
         ],
         'factories' => [
+            Controller\IndexController::class => InvokableFactory::class,
             Controller\CorretorController::class => CorretorControllerFactory::class,
         ],
     ],

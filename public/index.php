@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Laminas\Mvc\Application;
 use Laminas\Stdlib\ArrayUtils;
+use Laminas\Mvc\MvcEvent;
+use Application\Listener\AuthenticationListener;
 
 /**
  * This makes our life easier when dealing with paths. Everything is relative
@@ -39,4 +41,6 @@ if (file_exists(__DIR__ . '/../config/development.config.php')) {
 }
 
 // Run the application!
-Application::init($appConfig)->run();
+$app = Application::init($appConfig);
+$app->getEventManager()->attach(MvcEvent::EVENT_ROUTE, [new AuthenticationListener(),'verificarAutenticacao']);
+$app->run();

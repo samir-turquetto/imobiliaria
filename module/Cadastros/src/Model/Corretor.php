@@ -1,12 +1,14 @@
 <?php
 namespace Cadastros\Model;
 
-class Corretor
+use Application\Model\ModelInterface;
+
+class Corretor implements ModelInterface
 {
     public int $matricula;
     public string $nome;
     
-    public function __construct($data){
+    public function __construct(array $data){
        $this->exchangeArray($data);
     }
     

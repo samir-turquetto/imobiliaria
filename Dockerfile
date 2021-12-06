@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7.4-apache
 
 LABEL maintainer="getlaminas.org" \
     org.label-schema.docker.dockerfile="/Dockerfile" \
@@ -43,7 +43,7 @@ RUN apt-get install --yes libicu-dev \
 ###
 
 ## MySQL PDO support
-# RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql
 
 ## PostgreSQL PDO support
 # RUN apt-get install --yes libpq-dev \

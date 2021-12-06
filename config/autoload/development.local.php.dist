@@ -17,6 +17,14 @@
  */
 
 return [
+    'db' => [
+        'driver'   => 'Pdo_Mysql',
+        'database' => 'imobiliaria',
+        'username' => 'user',
+        'password' => 'mysql',
+        'port' => 3306,
+        'hostname' => 'db'
+    ],
     'view_manager' => [
         'display_exceptions' => true,
     ],

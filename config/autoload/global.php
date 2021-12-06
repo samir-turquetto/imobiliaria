@@ -19,7 +19,10 @@ return [
     'db' => [
         'driver'   => 'Pdo_Mysql',
         'database' => 'imobiliaria',
-        'username' => 'root' 
+        'username' => 'user',
+        'password' => 'mysql',
+        'port' => 3306,
+        'hostname' => 'db'
     ],
     'service_manager' => [
         'factories' => [
